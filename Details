@@ -1,0 +1,45 @@
+
+
+Topics:
+  
+  Not
+
+  count ---> db.getCollection('movie').count()
+
+  Sort ---> db.collection.find().sort({ name: 1 }); -1 for descending Higher Preference
+  
+  Limit ---> db.getCollection('movie').find({}).limit(2)
+  
+  skip --- db.getCollection('movie').find({}).skip(2)
+ 
+
+  Create:
+
+    insertOne ---> 
+      db.getCollection('movie').insertMany({id: "106"});
+
+    insertMany --->
+      db.getCollection('movie').insertMany({id: "106"});
+
+
+  update:
+
+    db.getCollection('movie').replaceOne({id: "111"}, { name: "Expandables", rating: 9 }, { upsert: true })
+
+
+  Delete:
+    db.getCollection('movie').deleteMany({id: "106"})
+
+
+Aggregate: Function Pipeline
+
+  $group => $sum (count)
+
+    db.posts.aggregate([
+      {
+        $group: {
+          _id: "$userId",
+          noOfPosts: { "$sum": 1 }
+        }
+      }
+    ])
